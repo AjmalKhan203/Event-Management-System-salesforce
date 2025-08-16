@@ -42,15 +42,3 @@ All declarative (Flow, validation, dashboard) work is configured in Salesforce U
 5. Assign necessary permissions to users for Student, Event, and Registration objects.
 
 ***
-
-## 🔗 Additional Notes
-
-- You can extend the project by adding more Apex triggers or batch processes.  
-- The declarative components can be exported as metadata or managed packages if needed.  
-- The LWC app assumes standard Salesforce Lightning Experience for deployment.
-
-***
-
-This README clearly separates your programmatic code contributions (LWC, Apex) from Salesforce declarative automation (Flows, validation, dashboards). It sets proper expectations for anyone reviewing or deploying your project.
-
-Would you like help generating a **basic installation guide** for the Flows and dashboard setup or tips on maintaining metadata for declarative components?
