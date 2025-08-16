@@ -25,7 +25,7 @@ This Salesforce application manages events and student registrations using a com
 
 ## 📂 What’s Included in the Codebase
 
-- `force-app/main/default/lwc/EventManagementSytem/` — LWC component files (HTML, JS, XML)  
+- `force-app/main/default/StudentRegistrationform/` — LWC component files (HTML, JS, XML)  
 - `force-app/main/default/classes/StudentRegistrationController.cls` — Apex controller  
 - `force-app/main/default/triggers/RegistrationLimitTrigger.trigger` — Apex trigger enforcing registration limit
 
