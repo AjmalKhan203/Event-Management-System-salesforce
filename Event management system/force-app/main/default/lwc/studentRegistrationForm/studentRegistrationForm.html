@@ -1,0 +1,62 @@
+<template>
+    <lightning-card title="Student Registration" icon-name="standard:form">
+        <div class="slds-m-around_medium">
+
+            <!-- Student Name -->
+            <lightning-input 
+                label="Student Name"
+                value={studentName}
+                onchange={handleInputChange}
+                data-field="studentName"
+                required>
+            </lightning-input>
+
+            <!-- Student Email -->
+            <lightning-input 
+                type="email"
+                label="Student Email"
+                value={studentEmail}
+                onchange={handleInputChange}
+                data-field="studentEmail"
+                required>
+            </lightning-input>
+
+            <!-- Department -->
+            <lightning-input 
+                label="Department"
+                value={studentDepartment}
+                onchange={handleInputChange}
+                data-field="studentDepartment">
+            </lightning-input>
+
+            <!-- Event Selection -->
+            <lightning-combobox
+                label="Select Event"
+                value={selectedEventId}
+                placeholder="Choose an event"
+                options={eventOptions}
+                onchange={handleEventChange}
+                required>
+            </lightning-combobox>
+
+            <!-- Submit Button -->
+            <div class="slds-m-top_medium">
+                <lightning-button 
+                    variant="brand"
+                    label="Register"
+                    onclick={handleSubmit}
+                    disabled={loading}>
+                </lightning-button>
+            </div>
+
+            <!-- Success/Error Messages -->
+            <template if:true={successMessage}>
+                <p class="slds-text-color_success slds-m-top_small">{successMessage}</p>
+            </template>
+            <template if:true={errorMessage}>
+                <p class="slds-text-color_error slds-m-top_small">{errorMessage}</p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

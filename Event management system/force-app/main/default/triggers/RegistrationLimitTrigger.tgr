@@ -1,0 +1,28 @@
+trigger RegistrationLimitTrigger on Registration__c (before insert) {
+    // Collect Event IDs from the registration records being added
+    Set<Id> eventIds = new Set<Id>();
+    for (Registration__c reg : Trigger.new) {
+        if (reg.Event__c != null) {
+            eventIds.add(reg.Event__c);
+        }
+    }
+    
+    // Query the related events with their current registrations
+    Map<Id, Event__c> eventsWithRegs = new Map<Id, Event__c>(
+        [SELECT Id, Max_Participants__c,
+                (SELECT Id FROM Registrations__r)
+         FROM Event__c
+         WHERE Id IN :eventIds]
+    );
+    
+    // Validation check for each registration in Trigger.new
+    for (Registration__c reg : Trigger.new) {
+        Event__c ev = eventsWithRegs.get(reg.Event__c);
+        if (ev != null) {
+            Integer currentCount = ev.Registrations__r.size();
+            if (currentCount >= ev.Max_Participants__c) {
+                reg.addError(' Registration limit reached for this event. No more seats available.');
+            }
+        }
+    }
+}
